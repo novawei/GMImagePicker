@@ -88,17 +88,17 @@
     _navigationController.toolbar.tintColor = _toolbarTintColor;
     [(UIView*)_navigationController.toolbar.subviews.firstObject setAlpha:0.75f];  // URGH - I know!
     
-    _navigationController.navigationBar.backgroundColor = _navigationBarBackgroundColor;
-    _navigationController.navigationBar.tintColor = _navigationBarTintColor;
-    NSDictionary *attributes;
-    if (_useCustomFontForNavigationBar) {
-        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor,
-                       NSFontAttributeName : [UIFont fontWithName:_pickerBoldFontName size:_pickerFontHeaderSize]};
-    } else {
-        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor};
-    }
-    _navigationController.navigationBar.titleTextAttributes = attributes;
-    
+//    _navigationController.navigationBar.backgroundColor = _navigationBarBackgroundColor;
+//    _navigationController.navigationBar.tintColor = _navigationBarTintColor;
+//    NSDictionary *attributes;
+//    if (_useCustomFontForNavigationBar) {
+//        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor,
+//                       NSFontAttributeName : [UIFont fontWithName:_pickerBoldFontName size:_pickerFontHeaderSize]};
+//    } else {
+//        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor};
+//    }
+//    _navigationController.navigationBar.titleTextAttributes = attributes;
+//    
     [self updateToolbar];
 }
 
@@ -115,9 +115,9 @@
     _navigationController = [[UINavigationController alloc] initWithRootViewController:albumsViewController];
     _navigationController.delegate = self;
     
-    _navigationController.navigationBar.translucent = YES;
-    [_navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    _navigationController.navigationBar.shadowImage = [UIImage new];
+//    _navigationController.navigationBar.translucent = YES;
+//    [_navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    _navigationController.navigationBar.shadowImage = [UIImage new];
     
     [_navigationController willMoveToParentViewController:self];
     [_navigationController.view setFrame:self.view.frame];
