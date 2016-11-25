@@ -312,7 +312,7 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
 
     // Default is a bold font, but keep this styled as a normal font
     header.textLabel.font = [UIFont systemFontOfSize:16];
-    header.textLabel.textColor = [UIColor colorWithRed:0xaa/256.0 green:0xaa/256.0 blue:0xaa/256.0 alpha:1.0];
+    header.textLabel.textColor = [UIColor colorWithRed:0x70/256.0 green:0x70/256.0 blue:0x70/256.0 alpha:1.0];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
