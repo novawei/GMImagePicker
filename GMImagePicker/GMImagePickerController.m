@@ -70,10 +70,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     // Ensure nav and toolbar customisations are set. Defaults are in place, but the user may have changed them
     self.view.backgroundColor = _pickerBackgroundColor;
-
+    
     _navigationController.toolbar.translucent = YES;
     _navigationController.toolbar.barTintColor = _toolbarBarTintColor;
     _navigationController.toolbar.tintColor = _toolbarTintColor;
@@ -161,7 +161,7 @@
     if (!self.allowsMultipleSelection && !self.showCameraButton) {
         return;
     }
-
+    
     UINavigationController *nav = (UINavigationController *)self.childViewControllers[0];
     for (UIViewController *viewController in nav.viewControllers) {
         NSUInteger index = 1;
@@ -236,7 +236,7 @@
                                               cancelButtonTitle:@"知道了"
                                               otherButtonTitles:nil];
         [alert show];
-
+        
         return;
     }
     
@@ -247,7 +247,8 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.mediaTypes = @[(NSString *)kUTTypeImage];
+    picker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
+    picker.videoQuality = UIImagePickerControllerQualityTypeMedium;
     picker.allowsEditing = NO;
     picker.delegate = self;
     picker.modalPresentationStyle = UIModalPresentationPopover;
@@ -312,7 +313,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-
+    
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
@@ -320,6 +321,14 @@
                                        self,
                                        @selector(image:finishedSavingWithError:contextInfo:),
                                        nil);
+    } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        NSURL *url = info[UIImagePickerControllerMediaURL];
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path)) {
+            UISaveVideoAtPathToSavedPhotosAlbum(url.path,
+                                                self,
+                                                @selector(video:finishedSavingWithError:contextInfo:),
+                                                nil);
+        }
     }
 }
 
@@ -332,6 +341,20 @@
 {
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"图片保存失败"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"知道了"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    // Note: The image view will auto refresh as the photo's are being observed in the other VCs
+}
+
+-(void)video:(NSString *)path finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"录像保存失败"
                                                         message:nil
                                                        delegate:nil
                                               cancelButtonTitle:@"知道了"
