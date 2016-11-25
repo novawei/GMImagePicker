@@ -218,7 +218,7 @@
     NSInteger nVideos = [self.selectedAssets filteredArrayUsingPredicate:videoPredicate].count;
     
     if (nImages > 0 || nVideos > 0) {
-        return [NSString stringWithFormat:@"已选%@项", @(nImages + nVideos)];
+        return [NSString stringWithFormat:@"已选 %@ 项", @(nImages + nVideos)];
     } else {
         return nil;
     }
