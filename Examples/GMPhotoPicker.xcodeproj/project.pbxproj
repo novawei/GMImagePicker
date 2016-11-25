@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B31E08651A0C45BC000D7841 /* GMImagePicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = B31E084C1A0C45BC000D7841 /* GMImagePicker.strings */; };
 		B31E086D1A0C45BC000D7841 /* GMVideoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B31E08631A0C45BC000D7841 /* GMVideoIcon.png */; };
 		B31E086E1A0C45BC000D7841 /* GMVideoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */; };
 		B321E46E19D19A5B0021FE16 /* GMSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B321E46819D19A5B0021FE16 /* GMSelected.png */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B31E084D1A0C45BC000D7841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = GMImagePicker.strings; sourceTree = "<group>"; };
 		B31E08631A0C45BC000D7841 /* GMVideoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMVideoIcon.png; sourceTree = "<group>"; };
 		B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMVideoIcon@2x.png"; sourceTree = "<group>"; };
 		B321E46819D19A5B0021FE16 /* GMSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMSelected.png; sourceTree = "<group>"; };
@@ -92,14 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B31E084B1A0C45BC000D7841 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				B31E084C1A0C45BC000D7841 /* GMImagePicker.strings */,
-			);
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 		B37D576B19CA3B39007F64BD = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +154,6 @@
 		B3A2F8A319D18A3700A59BE4 /* GMImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				B31E084B1A0C45BC000D7841 /* Base.lproj */,
 				B31E08631A0C45BC000D7841 /* GMVideoIcon.png */,
 				B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */,
 				B321E47219D1A5FD0021FE16 /* GMEmptyFolder@1x.png */,
@@ -280,7 +269,6 @@
 				B321E47519D1A5FD0021FE16 /* GMEmptyFolder@2x.png in Resources */,
 				B37D579F19CA44AF007F64BD /* Main.storyboard in Resources */,
 				B37D578519CA3B3A007F64BD /* Images.xcassets in Resources */,
-				B31E08651A0C45BC000D7841 /* GMImagePicker.strings in Resources */,
 				B31E086E1A0C45BC000D7841 /* GMVideoIcon@2x.png in Resources */,
 				B31E086D1A0C45BC000D7841 /* GMVideoIcon.png in Resources */,
 			);
@@ -330,14 +318,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B31E084C1A0C45BC000D7841 /* GMImagePicker.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B31E084D1A0C45BC000D7841 /* Base */,
-			);
-			name = GMImagePicker.strings;
-			sourceTree = "<group>";
-		};
 		B37D578119CA3B3A007F64BD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

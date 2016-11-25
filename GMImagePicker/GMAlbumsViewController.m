@@ -76,16 +76,15 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
     
     // Title
     if (!self.picker.title) {
-        self.title = @"照片";
+        self.title = @"相簿";
     } else {
         self.title = self.picker.title;
     }
     
     // Fetch PHAssetCollections:
     PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    self.collectionsFetchResults = @[topLevelUserCollections, smartAlbums];
-    self.collectionsLocalizedTitles = @[@"相册", @"智能相册"];
+    self.collectionsFetchResults = @[topLevelUserCollections];
+    self.collectionsLocalizedTitles = @[@"我的相簿"];
     
     [self updateFetchResults];
     
@@ -123,7 +122,6 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
     
     //Fetch PHAssetCollections:
     PHFetchResult *topLevelUserCollections = [self.collectionsFetchResults objectAtIndex:0];
-    PHFetchResult *smartAlbums = [self.collectionsFetchResults objectAtIndex:1];
     
     //All album: Sorted by descending creation date.
     NSMutableArray *allFetchResultArray = [[NSMutableArray alloc] init];
@@ -134,7 +132,7 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
         options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
         PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsWithOptions:options];
         [allFetchResultArray addObject:assetsFetchResult];
-        [allFetchResultLabel addObject:@"全部照片"];
+        [allFetchResultLabel addObject:@"相机胶卷"];
     }
     
     //User albums:
@@ -156,35 +154,8 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
         }
     }
     
-                                  
-    //Smart albums: Sorted by descending creation date.
-    NSMutableArray *smartFetchResultArray = [[NSMutableArray alloc] init];
-    NSMutableArray *smartFetchResultLabel = [[NSMutableArray alloc] init];
-    for(PHCollection *collection in smartAlbums)
-    {
-        if ([collection isKindOfClass:[PHAssetCollection class]])
-        {
-            PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-            
-            //Smart collections are PHAssetCollectionType=2;
-            if(self.picker.customSmartCollections && [self.picker.customSmartCollections containsObject:@(assetCollection.assetCollectionSubtype)])
-            {
-                PHFetchOptions *options = [[PHFetchOptions alloc] init];
-                options.predicate = [NSPredicate predicateWithFormat:@"mediaType in %@", self.picker.mediaTypes];
-                options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-                
-                PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
-                if(assetsFetchResult.count>0)
-                {
-                    [smartFetchResultArray addObject:assetsFetchResult];
-                    [smartFetchResultLabel addObject:collection.localizedTitle];
-                }
-            }
-        }
-    }
-    
-    self.collectionsFetchResultsAssets= @[allFetchResultArray,userFetchResultArray,smartFetchResultArray];
-    self.collectionsFetchResultsTitles= @[allFetchResultLabel,userFetchResultLabel,smartFetchResultLabel];
+    self.collectionsFetchResultsAssets= @[allFetchResultArray,userFetchResultArray];
+    self.collectionsFetchResultsTitles= @[allFetchResultLabel,userFetchResultLabel];
 }
 
 
@@ -305,9 +276,9 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
         }
     } else {
         [cell setVideoLayout:NO];
-        cell.imageView3.image = [UIImage imageNamed:@"GMEmptyFolder"];
-        cell.imageView2.image = [UIImage imageNamed:@"GMEmptyFolder"];
-        cell.imageView1.image = [UIImage imageNamed:@"GMEmptyFolder"];
+        cell.imageView3.image = [UIImage imageNamed:@"GMEmptyFolder" inBundle:[NSBundle bundleForClass:GMAlbumsViewController.class] compatibleWithTraitCollection:nil];
+        cell.imageView2.image = [UIImage imageNamed:@"GMEmptyFolder" inBundle:[NSBundle bundleForClass:GMAlbumsViewController.class] compatibleWithTraitCollection:nil];
+        cell.imageView1.image = [UIImage imageNamed:@"GMEmptyFolder" inBundle:[NSBundle bundleForClass:GMAlbumsViewController.class] compatibleWithTraitCollection:nil];
     }
     
     return cell;
@@ -336,12 +307,12 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.contentView.backgroundColor = [UIColor clearColor];
-    header.backgroundView.backgroundColor = [UIColor clearColor];
+    header.contentView.backgroundColor = [UIColor colorWithRed:0xaa/256.0 green:0xaa/256.0 blue:0xaa/256.0 alpha:0.9];
+    header.backgroundView.backgroundColor = header.contentView.backgroundColor;
 
     // Default is a bold font, but keep this styled as a normal font
     header.textLabel.font = [UIFont systemFontOfSize:16];
-    header.textLabel.textColor = self.picker.pickerTextColor;
+    header.textLabel.textColor = [UIColor colorWithRed:0x70/256.0 green:0x70/256.0 blue:0x70/256.0 alpha:1.0];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

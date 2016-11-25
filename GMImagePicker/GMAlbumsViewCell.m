@@ -97,12 +97,12 @@
         _videoIcon.hidden = NO;
 
         // TextLabel
-        self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.0];
+        self.textLabel.font = [UIFont systemFontOfSize:17];
         self.textLabel.numberOfLines = 1;
         self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.textLabel.adjustsFontSizeToFitWidth = YES;
 
-        self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14.0];
+        self.detailTextLabel.font = [UIFont systemFontOfSize:14];
         self.detailTextLabel.numberOfLines = 1;
         self.detailTextLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
