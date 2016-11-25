@@ -47,8 +47,7 @@
         //_customSmartCollections=nil;
         
         // Which media types will display
-        _mediaTypes = @[@(PHAssetMediaTypeAudio),
-                        @(PHAssetMediaTypeVideo),
+        _mediaTypes = @[@(PHAssetMediaTypeVideo),
                         @(PHAssetMediaTypeImage)];
         
         self.preferredContentSize = kPopoverContentSize;
@@ -56,14 +55,6 @@
         // UI Customisation
         _pickerBackgroundColor = [UIColor whiteColor];
         _pickerTextColor = [UIColor darkTextColor];
-        _pickerFontName = @"HelveticaNeue";
-        _pickerBoldFontName = @"HelveticaNeue-Bold";
-        _pickerFontNormalSize = 14.0f;
-        _pickerFontHeaderSize = 17.0f;
-        
-        _navigationBarBackgroundColor = [UIColor whiteColor];
-        _navigationBarTextColor = [UIColor darkTextColor];
-        _navigationBarTintColor = [UIColor darkTextColor];
         
         _toolbarBarTintColor = [UIColor whiteColor];
         _toolbarTextColor = [UIColor darkTextColor];
@@ -88,17 +79,6 @@
     _navigationController.toolbar.tintColor = _toolbarTintColor;
     [(UIView*)_navigationController.toolbar.subviews.firstObject setAlpha:0.75f];  // URGH - I know!
     
-//    _navigationController.navigationBar.backgroundColor = _navigationBarBackgroundColor;
-//    _navigationController.navigationBar.tintColor = _navigationBarTintColor;
-//    NSDictionary *attributes;
-//    if (_useCustomFontForNavigationBar) {
-//        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor,
-//                       NSFontAttributeName : [UIFont fontWithName:_pickerBoldFontName size:_pickerFontHeaderSize]};
-//    } else {
-//        attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor};
-//    }
-//    _navigationController.navigationBar.titleTextAttributes = attributes;
-//    
     [self updateToolbar];
 }
 
@@ -114,10 +94,6 @@
     GMAlbumsViewController *albumsViewController = [[GMAlbumsViewController alloc] init];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:albumsViewController];
     _navigationController.delegate = self;
-    
-//    _navigationController.navigationBar.translucent = YES;
-//    [_navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    _navigationController.navigationBar.shadowImage = [UIImage new];
     
     [_navigationController willMoveToParentViewController:self];
     [_navigationController.view setFrame:self.view.frame];
@@ -147,13 +123,7 @@
     
     if (!self.allowsMultipleSelection) {
         if (self.confirmSingleSelection) {
-            NSString *message = self.confirmSingleSelectionPrompt ? self.confirmSingleSelectionPrompt : [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.confirm.message",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"Do you want to select the image you tapped on?")];
-            
-            [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.confirm.title",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"Are You Sure?")]
-                                        message:message
-                                       delegate:self
-                              cancelButtonTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.action.no",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"No")]
-                              otherButtonTitles:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.action.yes",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"Yes")], nil] show];
+            // do nothing
         } else {
             [self finishPickingAssets:self];
         }
@@ -247,16 +217,8 @@
     NSInteger nImages = [self.selectedAssets filteredArrayUsingPredicate:photoPredicate].count;
     NSInteger nVideos = [self.selectedAssets filteredArrayUsingPredicate:videoPredicate].count;
     
-    if (nImages > 0 && nVideos > 0) {
-        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.selection.multiple-items",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"%@ Items Selected" ), @(nImages + nVideos)];
-    } else if (nImages > 1) {
-        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.selection.multiple-photos",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"%@ Photos Selected"), @(nImages)];
-    } else if (nImages == 1) {
-        return NSLocalizedStringFromTableInBundle(@"picker.selection.single-photo",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"1 Photo Selected" );
-    } else if (nVideos > 1) {
-        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"picker.selection.multiple-videos",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"%@ Videos Selected"), @(nVideos)];
-    } else if (nVideos == 1) {
-        return NSLocalizedStringFromTableInBundle(@"picker.selection.single-video",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class],  @"1 Video Selected");
+    if (nImages > 0 || nVideos > 0) {
+        return [NSString stringWithFormat:@"已选%@项", @(nImages + nVideos)];
     } else {
         return nil;
     }
@@ -268,10 +230,10 @@
 - (void)cameraButtonPressed:(UIBarButtonItem *)button
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Camera!"
-                                                        message:@"Sorry, this device does not have a camera."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法访问相机"
+                                                        message:nil
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:@"知道了"
                                               otherButtonTitles:nil];
         [alert show];
 
@@ -299,7 +261,7 @@
 
 - (NSDictionary *)toolbarTitleTextAttributes {
     return @{NSForegroundColorAttributeName : _toolbarTextColor,
-             NSFontAttributeName : [UIFont fontWithName:_pickerFontName size:_pickerFontHeaderSize]};
+             NSFontAttributeName : [UIFont systemFontOfSize:16]};
 }
 
 - (UIBarButtonItem *)titleButtonItem
@@ -369,10 +331,10 @@
 -(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Not Saved"
-                                                        message:@"Sorry, unable to save the new image!"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"图片保存失败"
+                                                        message:nil
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:@"知道了"
                                               otherButtonTitles:nil];
         [alert show];
     }

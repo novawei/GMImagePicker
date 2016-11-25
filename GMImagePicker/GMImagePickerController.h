@@ -155,15 +155,7 @@ static CGSize const kPopoverContentSize = {480, 720};
 @property (nonatomic, strong) UIColor *toolbarBarTintColor;
 @property (nonatomic, strong) UIColor *toolbarTextColor;
 @property (nonatomic, strong) UIColor *toolbarTintColor;
-@property (nonatomic, strong) UIColor *navigationBarBackgroundColor;
-@property (nonatomic, strong) UIColor *navigationBarTextColor;
-@property (nonatomic, strong) UIColor *navigationBarTintColor;
-@property (nonatomic, strong) NSString *pickerFontName;
-@property (nonatomic, strong) NSString *pickerBoldFontName;
-@property (nonatomic) CGFloat pickerFontNormalSize;
-@property (nonatomic) CGFloat pickerFontHeaderSize;
 @property (nonatomic) UIStatusBarStyle pickerStatusBarStyle;
-@property (nonatomic) BOOL useCustomFontForNavigationBar;
 
 /**
  * A reference to the navigation controller used to manage the whole picking process
