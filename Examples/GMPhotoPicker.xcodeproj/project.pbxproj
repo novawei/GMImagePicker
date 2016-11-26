@@ -11,7 +11,6 @@
 		B31E086E1A0C45BC000D7841 /* GMVideoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */; };
 		B321E46E19D19A5B0021FE16 /* GMSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B321E46819D19A5B0021FE16 /* GMSelected.png */; };
 		B321E46F19D19A5B0021FE16 /* GMSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B321E46919D19A5B0021FE16 /* GMSelected@2x.png */; };
-		B321E47419D1A5FD0021FE16 /* GMEmptyFolder@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B321E47219D1A5FD0021FE16 /* GMEmptyFolder@1x.png */; };
 		B321E47519D1A5FD0021FE16 /* GMEmptyFolder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B321E47319D1A5FD0021FE16 /* GMEmptyFolder@2x.png */; };
 		B37D577A19CA3B3A007F64BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B37D577919CA3B3A007F64BD /* main.m */; };
 		B37D577D19CA3B3A007F64BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B37D577C19CA3B3A007F64BD /* AppDelegate.m */; };
@@ -26,6 +25,10 @@
 		B3A2F8B119D18A3700A59BE4 /* GMGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2F8AB19D18A3700A59BE4 /* GMGridViewController.m */; };
 		B3A2F8B219D18A3700A59BE4 /* GMImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2F8AD19D18A3700A59BE4 /* GMImagePickerController.m */; };
 		D93E0B2E1BE378F6001DA8EC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93E0B2D1BE378F6001DA8EC /* MobileCoreServices.framework */; };
+		EFD5FE3B1DE93B010081DB1A /* GMEmptyFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD5FE391DE93B010081DB1A /* GMEmptyFolder.png */; };
+		EFD5FE3C1DE93B010081DB1A /* GMEmptyFolder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD5FE3A1DE93B010081DB1A /* GMEmptyFolder@3x.png */; };
+		EFD5FE3F1DE93B280081DB1A /* GMSelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD5FE3D1DE93B280081DB1A /* GMSelected@3x.png */; };
+		EFD5FE401DE93B280081DB1A /* GMVideoIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD5FE3E1DE93B280081DB1A /* GMVideoIcon@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,6 @@
 		B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMVideoIcon@2x.png"; sourceTree = "<group>"; };
 		B321E46819D19A5B0021FE16 /* GMSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMSelected.png; sourceTree = "<group>"; };
 		B321E46919D19A5B0021FE16 /* GMSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMSelected@2x.png"; sourceTree = "<group>"; };
-		B321E47219D1A5FD0021FE16 /* GMEmptyFolder@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMEmptyFolder@1x.png"; sourceTree = "<group>"; };
 		B321E47319D1A5FD0021FE16 /* GMEmptyFolder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMEmptyFolder@2x.png"; sourceTree = "<group>"; };
 		B37D577419CA3B3A007F64BD /* GMPhotoPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMPhotoPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37D577819CA3B3A007F64BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +71,10 @@
 		B3A2F8AC19D18A3700A59BE4 /* GMImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImagePickerController.h; sourceTree = "<group>"; };
 		B3A2F8AD19D18A3700A59BE4 /* GMImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImagePickerController.m; sourceTree = "<group>"; };
 		D93E0B2D1BE378F6001DA8EC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EFD5FE391DE93B010081DB1A /* GMEmptyFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMEmptyFolder.png; sourceTree = "<group>"; };
+		EFD5FE3A1DE93B010081DB1A /* GMEmptyFolder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMEmptyFolder@3x.png"; sourceTree = "<group>"; };
+		EFD5FE3D1DE93B280081DB1A /* GMSelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMSelected@3x.png"; sourceTree = "<group>"; };
+		EFD5FE3E1DE93B280081DB1A /* GMVideoIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GMVideoIcon@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,12 +160,15 @@
 		B3A2F8A319D18A3700A59BE4 /* GMImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				EFD5FE391DE93B010081DB1A /* GMEmptyFolder.png */,
+				B321E47319D1A5FD0021FE16 /* GMEmptyFolder@2x.png */,
+				EFD5FE3A1DE93B010081DB1A /* GMEmptyFolder@3x.png */,
 				B31E08631A0C45BC000D7841 /* GMVideoIcon.png */,
 				B31E08641A0C45BC000D7841 /* GMVideoIcon@2x.png */,
-				B321E47219D1A5FD0021FE16 /* GMEmptyFolder@1x.png */,
-				B321E47319D1A5FD0021FE16 /* GMEmptyFolder@2x.png */,
+				EFD5FE3E1DE93B280081DB1A /* GMVideoIcon@3x.png */,
 				B321E46819D19A5B0021FE16 /* GMSelected.png */,
 				B321E46919D19A5B0021FE16 /* GMSelected@2x.png */,
+				EFD5FE3D1DE93B280081DB1A /* GMSelected@3x.png */,
 				B3A2F8A419D18A3700A59BE4 /* GMAlbumsViewCell.h */,
 				B3A2F8A519D18A3700A59BE4 /* GMAlbumsViewCell.m */,
 				B3A2F8A619D18A3700A59BE4 /* GMAlbumsViewController.h */,
@@ -262,11 +271,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD5FE401DE93B280081DB1A /* GMVideoIcon@3x.png in Resources */,
+				EFD5FE3B1DE93B010081DB1A /* GMEmptyFolder.png in Resources */,
 				B321E46F19D19A5B0021FE16 /* GMSelected@2x.png in Resources */,
 				B37D57A019CA44B3007F64BD /* Info.plist in Resources */,
+				EFD5FE3F1DE93B280081DB1A /* GMSelected@3x.png in Resources */,
 				B321E46E19D19A5B0021FE16 /* GMSelected.png in Resources */,
-				B321E47419D1A5FD0021FE16 /* GMEmptyFolder@1x.png in Resources */,
 				B321E47519D1A5FD0021FE16 /* GMEmptyFolder@2x.png in Resources */,
+				EFD5FE3C1DE93B010081DB1A /* GMEmptyFolder@3x.png in Resources */,
 				B37D579F19CA44AF007F64BD /* Main.storyboard in Resources */,
 				B37D578519CA3B3A007F64BD /* Images.xcassets in Resources */,
 				B31E086E1A0C45BC000D7841 /* GMVideoIcon@2x.png in Resources */,
